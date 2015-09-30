@@ -1,5 +1,5 @@
-# ucmw
-Unified CodeIgniter Model Wrapper
+# Unified CodeIgniter Model Wrapper
+UCMW
 
 AUTHOR: Maxim Titovich
 
@@ -23,7 +23,7 @@ After model are generated, remove model_generator.php from controllers dir.
 
 UCMW has this basic functions:
 
--countAll
+### countAll
 
 `public function countAll($filter = null)`
 
@@ -33,6 +33,8 @@ You can pass a SQL string WHERE clause also, if 'field_name' will be not string,
 
 `$filter` is used to generate WHERE clause in request.
 
+Note, that all parameters are optional!
+
 Function returns integer value, containing quantity of items, found with passed `$filter`.
 
 Example:
@@ -41,7 +43,7 @@ Example:
 $this->load->model('item_model');
 $this->item_model->countAll(array('name' => 'Maxim'));
 ```
--getAll
+### getAll
 
 `public function getAll($filter = null, $order = null, $limit = null, $offset = null, $customFields = null)`
 
@@ -58,6 +60,8 @@ You can pass a SQL string WHERE clause also, if 'field_name' will be not string,
 `$offset` is an integer value for setting offset. Example, pass 100 to `$offset` parameter, to get rows starting from 101
 
 `customFields` is an array of SQL strings, attached requests. Example: `array("(SELECT another_table.item_id, another_table.name WHERE table_name.id = another_table.item_id)", "(SELECT another_table.item_id, another_table.name WHERE table_name.id = another_table.item_id)")`
+
+Note, that all parameters are optional!
 
 Function returns array of objects
 
@@ -76,7 +80,7 @@ array(
 );
 ```
 
--getById
+### getById
 
 `public function getById($id = 0)`
 
@@ -85,7 +89,117 @@ array(
 This function returns object with 'id' of `$id`
 
 Example:
+
 ```
 $this->load->model('item_model');
 $this->item_model->getById(10);
 ```
+
+### save
+
+`public function save($data, $id = 0)`
+
+`$data` is simple array of data you want to save. Example: `array('name' => 'Maxim', 'surname' => 'Titovich')`
+
+`$id` is an optional parameter, if you pass it, it will be used as a filter, to update data for a specific record id. If you will not pass this parameter, function will insert new row.
+
+This function returns object with saved values.
+
+Example:
+
+```
+$this->load->model('item_model');
+$this->item_model->save(array('name' => 'Maxim', 'surname' => 'Titovich'));
+```
+
+OR:
+
+```
+$this->load->model('item_model');
+$this->item_model->save(array('name' => 'Maxim', 'surname' => 'Titovich'), 2);
+```
+
+### remove
+
+`public function remove($filter = null)`
+
+Where `$filter` param is array of filters, like: `array('field_name', 'value')`. Value can also be an array of values, like: `array('field_name', array('value1', 'value2'))`.
+
+You can pass a SQL string WHERE clause also, if 'field_name' will be not string, but integer, like so: `array(0 => 'id = 5')`.
+
+`$filter` is used to generate WHERE clause in request.
+
+Note, that all parameters are optional!
+
+Function deletes all rows, that are found with `$filter`.
+
+Example:
+
+```
+$this->load->model('item_model');
+$this->item_model->remove(array('name' => 'Maxim'));
+```
+
+### getSessionOrder and setSessionOrder
+
+`public function getSessionOrder()`
+
+`public function setSessionOrder($data)`
+
+This functions help you easilly save and get order for current session and class. Or you can store anything there, but it is intended to be used to store and return `array('id' => 'desc')` like values for current user session.
+
+Example:
+
+```
+$this->load->model('item_model');
+$this->item_model->setSessionOrder(array('name' => 'desc'));
+var_dump($this->item_model->getSessionOrder());
+```
+
+### getSessionFilter and setSessionFilter
+
+`public function getSessionFilter()`
+
+`public function setSessionFilter($data)`
+
+This functions help you easilly save and get filter for current session and class. Or you can store anything there, but it is intended to be used to store and return `array('name' => 'Maxim', 'surname' => 'Titovich')` like values for current user session.
+
+Example:
+
+```
+$this->load->model('item_model');
+$this->item_model->setSessionFilter(array('name' => 'Maxim', 'surname' => 'Titovich'));
+var_dump($this->item_model->getSessionFilter());
+```
+
+## Foreign keys and model relation navigation
+
+If you have foreign keys. Model_generator will generate functions like `load_{referenced_table_name}()`, you can call them within models, to navigate through relations, like so:
+
+```
+$this->load->model('item_model');
+$item = $this->item_model->getById(5);
+$item->load_category();
+```
+
+BUT, you shouldn't use them that way. UCMW overloads class variables for you, so you just call `{referenced_table_name}` instead of a function. This is used to store value, to escape multiple database request.
+
+```
+$this->load->model('item_model');
+$item = $this->item_model->getById(5);
+$item->category;
+```
+
+## CodeIgniter caching
+
+UCMW suppots CodeIgniter caching to Redis, Memcached, etc...
+
+To use it, just enable caching in /config/autoload.php like so:
+
+`$autoload['drivers'] = array('cache' => array('adapter' => 'memcached'));`
+
+NOTE that you have to specify adapter, or cache will not work correctly! 
+
+## Contact me
+
+[Maxim Titovich](http://max-ti.ru)
