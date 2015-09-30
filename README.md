@@ -19,6 +19,10 @@ After model are generated, remove model_generator.php from controllers dir.
 
 # How to use
 
+## Modifying models
+
+If you want to reference ci model, you should use `$this->CI` instead of `$this`, or it will not work.
+
 ## Basic functions
 
 UCMW has this basic functions:
