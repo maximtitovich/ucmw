@@ -14,7 +14,7 @@ class Model_wrapper extends CI_Model
 
     public function __construct()
     {
-        $this->CI = get_instance();
+        $this->CI =& get_instance();
     }
 
     public function __get($name)
