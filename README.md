@@ -113,6 +113,14 @@ $this->item_model->getById(10);
 
 `$id` is an optional parameter, if you pass it, it will be used as a filter, to update data for a specific record id. If you will not pass this parameter, function will insert new row.
 
+If you have your model object loaded you can save data for it, like this:
+
+```
+$this->load->model('person_model');
+$me = $this->person_model->getById(1);
+$me->save(array('name' => 'Maxim'));
+```
+
 This function returns object with saved values.
 
 Example:

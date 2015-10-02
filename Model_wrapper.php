@@ -123,6 +123,11 @@ class Model_wrapper extends CI_Model
             $this->CI->db->update($this->getClassName(), $data, array('id' => $id));
 			return  $this->getById($id);
 		}
+        elseif(intval($this->id) > 0)
+        {
+            $this->CI->db->update($this->getClassName(), $data, array('id' => $this->id));
+            return  $this->getById($id);
+        }
         else
         {
             $this->CI->db->insert($this->getClassName(), $data);
