@@ -9,6 +9,10 @@ Put Model_wrapper.php to models directory, put Model_generator.php to controller
 
 Setup basic stuff, database connection. (Now works only with mysql!)
 
+Autoload Model_wrapper class in config/autoload.php, like this:
+
+`$autoload['model'] = array('Model_wrapper');`
+
 Open http://yourprojectweb/index.php/model_generator or http://yourprojectweb/model_generator if you use .htaccess to get rid of index.php prefix
 
 Models are generated based on your database structure, it includes foreign keys.
@@ -16,6 +20,8 @@ Models are generated based on your database structure, it includes foreign keys.
 After model are generated, remove model_generator.php from controllers dir.
 
 !Note, that you can regenerate models after changing database, but you should back up modified models, as they will be overwritten.
+
+HAVE FUN! ;-)
 
 # How to use
 
