@@ -28,8 +28,7 @@ class Model_generator extends CI_Controller {
             $data .= "** AUTHOR: Maxim Titovich\n";
             $data .= "** 2015\n";
             $data .= "*/\n\n";
-            $data .= 'if ( ! defined("BASEPATH")) exit("No direct script access allowed");'."\n";
-            $data .= 'require_once(APPPATH."models/Model_wrapper.php");'."\n\n";
+            $data .= 'if ( ! defined("BASEPATH")) exit("No direct script access allowed");'."\n\n";
             $data .= 'class '.$class_name.' extends Model_wrapper'."\n{\n\n";
             $query = $this->db->query("SELECT column_name FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = ".$this->db->escape($this->db->database)." AND TABLE_NAME = ".$this->db->escape($table->table_name));
             $columns = $query->result();
