@@ -62,7 +62,7 @@ class Model_wrapper extends CI_Model
     {
         if($field && $value)
         {
-            $result = $this->getAll(array($field => $value, null, 1));
+            $result = $this->getAll(array($field => $value), null, 1);
             return array_shift($result);
         }
         else
