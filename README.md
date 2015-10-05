@@ -90,6 +90,23 @@ array(
 );
 ```
 
+### getByField
+
+`public function getByField($field = null, $value = null)`
+
+`$field` is a field name(string parameter)
+
+`$value` is a field required value(string parameter)
+
+This function returns object with '$field' of `$value`
+
+Example:
+
+```
+$this->load->model('item_model');
+$this->item_model->getByField('name', 'Maxim');
+```
+
 ### getById
 
 `public function getById($id = 0)`

@@ -58,13 +58,21 @@ class Model_wrapper extends CI_Model
         $this->CI->db->select("*, ".implode(", ",$customSelect));
     }
 
+    public function getByField($field = null, $value = null)
+    {
+        if($field && $value)
+        {
+            $result = $this->getAll(array($field => $value, null, 1));
+            return array_shift($result);
+        }
+        else
+            return null;
+    }
+
     public function getById($id = 0)
     {
         if(intval($id) > 0)
-        {
-            $result = $this->getAll(array('id' => $id));
-            return array_shift($result);
-        }
+            return $this->getByField('id', $id);
         else
             return null;
     }
