@@ -225,16 +225,6 @@ $item = $this->item_model->getById(5);
 $item->category;
 ```
 
-## CodeIgniter caching
-
-UCMW suppots CodeIgniter caching to Redis, Memcached, etc...
-
-To use it, just enable caching in /config/autoload.php like so:
-
-`$autoload['drivers'] = array('cache' => array('adapter' => 'memcached'));`
-
-NOTE that you have to specify adapter, or cache will not work correctly! 
-
 ## Contact me
 
 [Maxim Titovich](http://max-ti.ru)

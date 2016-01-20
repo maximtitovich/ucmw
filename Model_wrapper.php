@@ -105,23 +105,7 @@ class Model_wrapper extends CI_Model
         elseif($offset)
             $this->CI->db->limit(1000, $offset);
 
-        if(isset($this->CI->cache))
-        {
-            $key = md5($this->CI->db->get_compiled_select($this->getClassName()));
-            if($this->CI->cache->get($key))
-            {
-                $this->CI->db->reset_query();
-                return $this->CI->cache->get($key);
-            }
-            else
-            {
-                $data = $this->CI->db->get($this->getClassName())->custom_result_object(get_class($this));
-                $this->CI->cache->save($key, $data);
-                return $data;
-            }
-        }
-        else
-            return $this->CI->db->get($this->getClassName())->custom_result_object(get_class($this));
+        return $this->CI->db->get($this->getClassName())->custom_result_object(get_class($this));
     }
 
     public function save($data, $id = 0)
