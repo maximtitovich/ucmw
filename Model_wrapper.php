@@ -118,7 +118,7 @@ class Model_wrapper extends CI_Model
         elseif(intval($this->id) > 0)
         {
             $this->CI->db->update($this->getClassName(), $data, array('id' => $this->id));
-            return  $this->getById($id);
+            return  $this->getById($this->id);
         }
         else
         {
