@@ -123,7 +123,10 @@ class Model_wrapper extends CI_Model
         else
         {
             $this->CI->db->insert($this->getClassName(), $data);
-            return  $this->getById($this->CI->db->insert_id());
+            if(property_exists($this, 'id'))
+                return $this->getById($this->CI->db->insert_id());
+            else
+                return true;
         }
     }
 
