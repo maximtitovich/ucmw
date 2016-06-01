@@ -17,7 +17,7 @@ class Model_wrapper extends CI_Model
         $this->CI =& get_instance();
     }
 
-    public function __get($name)
+    public function &__get($name)
     {
         if(is_string($name))
         {
