@@ -108,25 +108,30 @@ class Model_wrapper extends CI_Model
         return $this->CI->db->get($this->getClassName())->custom_result_object(get_class($this));
     }
 
-    public function save($data, $id = 0)
+    public function save($data, $array)
     {
-        if(intval($id) > 0)
+        if($array && is_array($array))
 		{
-            $this->CI->db->update($this->getClassName(), $data, array('id' => $id));
-			return  $this->getById($id);
+            $this->CI->db->update($this->getClassName(), $data, $array);
+            $return_data = $this->getAll(array_merge($array, $data));
+            if($return_data)
+                return array_shift($return_data);
+            else
+                return null;
 		}
         elseif(intval($this->id) > 0)
         {
             $this->CI->db->update($this->getClassName(), $data, array('id' => $this->id));
-            return  $this->getById($this->id);
+            return $this->getById($this->id);
         }
         else
         {
             $this->CI->db->insert($this->getClassName(), $data);
-            if(property_exists($this, 'id'))
-                return $this->getById($this->CI->db->insert_id());
+            $return_data = $this->getAll($data);
+            if($return_data)
+                return array_shift($return_data);
             else
-                return true;
+                return null;
         }
     }
 
