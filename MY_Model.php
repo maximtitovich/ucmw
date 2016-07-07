@@ -120,11 +120,6 @@ class MY_Model extends CI_Model
             else
                 return null;
 		}
-        elseif(intval($this->id) > 0)
-        {
-            $this->CI->db->update($this->getClassName(), $data, array('id' => $this->id));
-            return $this->getById($this->id);
-        }
         else
         {
             $this->CI->db->insert($this->getClassName(), $data);
