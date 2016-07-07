@@ -7,11 +7,9 @@ AUTHOR: Maxim Titovich
 # Installation guide
 Put Model_wrapper.php to models directory, put Model_generator.php to controllers directory, all within your CodeIgniter Project.
 
-Setup basic stuff, database connection. (Now works only with mysql!)
+Setup basic stuff, database connection. (Now works only with mysql/postgresql/mssql!)
 
-Autoload Model_wrapper class in config/autoload.php, like this:
-
-`$autoload['model'] = array('Model_wrapper');`
+Put MY_Model.php to core folder at your codeigniter application
 
 Open http://yourprojectweb/index.php/model_generator or http://yourprojectweb/model_generator if you use .htaccess to get rid of index.php prefix
 
