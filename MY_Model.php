@@ -2,7 +2,7 @@
 /*
 ** Unified CodeIgniter Model Wrapper
 ** AUTHOR: Maxim Titovich
-** 2015
+** 2015-2016
 */
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');

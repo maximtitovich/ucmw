@@ -3,7 +3,9 @@ UCMW
 
 AUTHOR: Maxim Titovich
 
-2015
+2015-2016
+
+More basic solution, without my custom db request functions can be found [here](http://server.max-ti.ru:30000/maximtitovich/Igniter-Model-Magic) 
 # Installation guide
 Put Model_wrapper.php to models directory, put Model_generator.php to controllers directory, all within your CodeIgniter Project.
 

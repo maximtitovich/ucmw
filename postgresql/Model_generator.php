@@ -14,7 +14,7 @@ class Model_generator extends CI_Controller {
         $tables = $this->db->list_tables();
         echo "**Unified CodeIgniter Model Wrapper**<br/>";
         echo "**AUTHOR: Maxim Titovich**<br/>";
-        echo "**2015**<br/><br/>";
+        echo "**2015-2016**<br/><br/>";
         echo "---------------------------------------------<br/>";
         echo "Total tables found: ".count($tables)."<br/>";
         echo "---------------------------------------------<br/>";
