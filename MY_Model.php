@@ -18,7 +18,7 @@ class MY_Model extends CI_Model
         $this->CI =& get_instance();
     }
 
-    public function &__get($name)
+    public function __get($name)
     {
         if(is_string($name))
         {
@@ -109,7 +109,7 @@ class MY_Model extends CI_Model
         return $this->CI->db->get($this->getClassName())->custom_result_object(get_class($this));
     }
 
-    public function save($data, $array)
+    public function save($data, $array = null)
     {
         if($array && is_array($array))
 		{
