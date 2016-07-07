@@ -2,7 +2,7 @@
 /*
 ** Unified CodeIgniter Model Wrapper
 ** AUTHOR: Maxim Titovich
-** 2015
+** 2015-2016
 */
 
 defined('BASEPATH') OR exit('No direct script access allowed');
@@ -25,7 +25,7 @@ class Model_generator extends CI_Controller {
             $data .= "/*\n";
             $data .= "** Unified CodeIgniter Model Wrapper\n";
             $data .= "** AUTHOR: Maxim Titovich\n";
-            $data .= "** 2015\n";
+            $data .= "** 2015-2016\n";
             $data .= "*/\n\n";
             $data .= 'if ( ! defined("BASEPATH")) exit("No direct script access allowed");'."\n\n";
             $data .= 'class '.$class_name.' extends MY_Model'."\n{\n\n";
