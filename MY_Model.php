@@ -136,7 +136,7 @@ class MY_Model extends CI_Model
         if(count($filter) > 0)
         {
             $this->setFilter($filter);
-            $this->CI->db->delete($this->getClassName());
+            return $this->CI->db->delete($this->getClassName());
         }
     }
 
