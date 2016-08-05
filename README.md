@@ -107,51 +107,51 @@ $this->load->model('item_model');
 $this->item_model->getByField('name', 'Maxim');
 ```
 
-### getById
+### getByPk
 
-`public function getById($id = 0)`
+`public function getByPk($id = 0, $pk = 'id')
 
 `$id` is an integer parameter.
 
-This function returns object with 'id' of `$id`
+This function returns object with 'id' of `$id`. If you're table pk name differs from 'id', you can pass it as a string.
 
 Example:
 
 ```
 $this->load->model('item_model');
-$this->item_model->getById(10);
+$this->item_model->getByPk(10);
 ```
 
 ### save
 
-`public function save($data, $id = 0)`
+`public function save($data, $array)`
 
 `$data` is simple array of data you want to save. Example: `array('name' => 'Maxim', 'surname' => 'Titovich')`
 
-`$id` is an optional parameter, if you pass it, it will be used as a filter, to update data for a specific record id. If you will not pass this parameter, function will insert new row.
+`$array` is an optional array parameter, if you pass it, it will be used as a filter, to update data for a specific record. If you will not pass this parameter, function will insert new row.
 
 If you have your model object loaded you can save data for it, like this:
 
 ```
 $this->load->model('person_model');
 $me = $this->person_model->getById(1);
-$me->save(array('name' => 'Maxim'));
+$me = $this->person_model->save(array('name' => 'Maxim'), array('id' => $me->id));
 ```
 
 This function returns object with saved values.
 
-Example:
+Example to insert:
 
 ```
 $this->load->model('item_model');
 $this->item_model->save(array('name' => 'Maxim', 'surname' => 'Titovich'));
 ```
 
-OR:
+OR to update:
 
 ```
 $this->load->model('item_model');
-$this->item_model->save(array('name' => 'Maxim', 'surname' => 'Titovich'), 2);
+$this->item_model->save(array('name' => 'Maxim', 'surname' => 'Titovich'), array('id' => 5));
 ```
 
 ### remove

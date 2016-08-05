@@ -70,10 +70,10 @@ class MY_Model extends CI_Model
             return null;
     }
 
-    public function getById($id = 0)
+    public function getByPk($id = 0, $pk = 'id')
     {
         if(intval($id) > 0)
-            return $this->getByField('id', $id);
+            return $this->getByField($pk, $id);
         else
             return null;
     }
