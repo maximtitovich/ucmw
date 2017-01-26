@@ -31,7 +31,7 @@ class Model_generator extends CI_Controller {
             $data .= 'class '.$class_name.' extends MY_Model'."\n{\n\n";
             $columns = $this->db->list_fields($table);
             foreach($columns as $column)
-                $data .= "\t".'var $'.$column.';'."\n";
+                $data .= "\t" . 'public $' . $column . ';' . "\n";
             $query = $this->db->query("select column_name, constraint_name, referenced_table_name, referenced_column_name from INFORMATION_SCHEMA.KEY_COLUMN_USAGE where TABLE_SCHEMA = ".$this->db->escape($this->db->database)." and TABLE_NAME = ".$this->db->escape($table)." and referenced_column_name is not NULL;");
             $constraints = $query->result();
             foreach($constraints as $constraint)

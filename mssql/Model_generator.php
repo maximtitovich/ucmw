@@ -31,7 +31,7 @@ class Model_generator extends CI_Controller {
             $data .= 'class '.$class_name.' extends MY_Model'."\n{\n\n";
             $columns = $this->db->list_fields($table);
             foreach($columns as $column)
-                $data .= "\t".'var $'.$column.';'."\n";
+                $data .= "\t" . 'public $' . $column . ';' . "\n";
             $query = $this->db->query("SELECT *
                                           FROM
                                             (
